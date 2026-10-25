@@ -870,16 +870,45 @@ function showToast(title,sub,duration=3){
   toastTimer=duration;
 }
 
-function showScreen(title,description,buttonText,action){
-  gameState='menu';
-  $('screen').style.display='flex';
-  hud.style.display='none';
-  $('content').querySelector('h1').innerHTML=title;
-  $('description').innerHTML=description;
-  $('mainButton').textContent=buttonText;
-  $('mainButton').onclick=action;
+
+function showScreen(title, description, buttonText, action) {
+  gameState = 'menu';
+
+  const screenElement = document.getElementById('screen');
+  const hudElement = document.getElementById('hud');
+  const contentElement = document.getElementById('content');
+  const descriptionElement = document.getElementById('description');
+  const buttonElement = document.getElementById('mainButton');
+
+  if (!screenElement || !contentElement || !descriptionElement || !buttonElement) {
+    console.error('Missing game UI element:', {
+      screen: !!screenElement,
+      content: !!contentElement,
+      description: !!descriptionElement,
+      button: !!buttonElement
+    });
+    return;
+  }
+
+  screenElement.style.display = 'flex';
+
+  if (hudElement) {
+    hudElement.style.display = 'none';
+  }
+
+  const heading = contentElement.querySelector('h1');
+
+  if (heading) {
+    heading.innerHTML = title;
+  }
+
+  descriptionElement.innerHTML = description;
+  buttonElement.textContent = buttonText;
+  buttonElement.onclick = action;
+
   document.exitPointerLock?.();
 }
+
 
 function beginGame(){
   stamina=100;
