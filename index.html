@@ -872,7 +872,7 @@ function showToast(title,sub,duration=3){
 
 function showScreen(title,description,buttonText,action){
   gameState='menu';
-  screen.style.display='flex';
+  $('screen').style.display='flex';
   hud.style.display='none';
   $('content').querySelector('h1').innerHTML=title;
   $('description').innerHTML=description;
