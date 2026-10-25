@@ -920,7 +920,7 @@ function beginGame(){
   $('content').querySelector('h1').innerHTML=
     'THE LAST SHIFT<span>:</span><br>CONTAINMENT';
 
-  screen.style.display='none';
+  document.getElementById('screen').style.display = 'none';='none';
   hud.style.display='block';
   gameState='playing';
   showToast('LEVEL 01','THE RESEARCH LAB',3);
@@ -947,7 +947,7 @@ function completeLevel(){
       `${LEVELS[next].subtitle}<br><br>`+
       '<span style="color:#ff6b6b">Warning: threat activity has increased.</span>',
       'ENTER NEXT SECTOR',()=>{
-        screen.style.display='none';
+        document.getElementById('screen').style.display = 'none';='none';
         hud.style.display='block';
         buildLevel(next);
         gameState='playing';
@@ -1298,7 +1298,7 @@ document.addEventListener('pointerlockchange',()=>{
       'The facility is still out there. The thing is still hunting.'+
       '<br><br>Take a breath, then return when you are ready.',
       'RESUME SHIFT',()=>{
-        screen.style.display='none';
+        document.getElementById('screen').style.display = 'none';='none';
         hud.style.display='block';
         gameState='playing';
         renderer.domElement.requestPointerLock?.();
